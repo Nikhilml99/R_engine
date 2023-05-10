@@ -1,0 +1,159 @@
+{
+  "intents": [
+    {
+      "name": "Greeting",
+      "patterns": ["hi", "hello", "hey"],
+      "responses": ["Hi there! How can I assist you?","Hey there! How can I assist you?"]
+    },
+     {
+      "name": "concern",
+      "patterns": ["how are you?", "how's you?", "how do you do?","what's up?"],
+      "responses": ["I am good what about you?"]
+    },
+    {
+      "name": "Name",
+      "patterns": ["what's your name?", "what should I call you?", "do you have a name?","what is your name"],
+      "responses": ["You can call me Chatbot.", "My name is Chatbot.", "I go by Chatbot."]
+    },
+ 
+     {
+      "name": "B response",
+      "patterns": ["I am good", "I am fine ", "it's great","Awesome","I am Well", "I am also good", "I also am fine ", "it's great","Awesome","I am Well"],
+      "responses": ["good to hear,are you looking for job or candidate recommendation?"]
+    },
+    {
+      "name":"User say no",
+      "patterns":["No","I am not looking job or candidate recommendation,but i have another question"
+    ],
+      "responses":["please tell me your query","how can i assist you?"]
+    },
+    {
+      "name": "user requirement confirmation",
+      "patterns": ["I'm looking for a job, any suggestions?",    
+                  "I need your help",
+                  "What kind of job should I apply for?",
+                  "What are some good job options for me?",
+                  "Can you recommend any job openings that match my skills and experience?",
+                 " I'm interested in exploring career opportunities. Can you help me with that?",
+                  "I'm a candidate with a specific set of skills. What kind of jobs would you recommend?",
+                 " I'm not sure what kind of job I'm looking for. Can you suggest some options?",
+                  "I'm in the market for a new job. Can you point me in the right direction?",
+                 " I'm looking for career advice. Can you provide any guidance?",
+                 " I'm trying to decide on a career path. Can you give me some suggestions?",
+                  "What kind of job would be a good fit for my qualifications?",
+                 " I'm looking for a job in a particular industry. Can you suggest any opportunities?",
+                 " I'm looking to switch careers. Can you recommend any jobs that align with my interests?",
+                 "Do you know any candidates who would be a good fit for this position?",
+                " I'm looking for a candidate with specific skills. Can you recommend anyone?",
+                " I need to fill a position quickly. Do you have any candidates in mind?",
+                " Can you suggest any candidates who are looking for work in this field?",
+                " I'm looking for a candidate who is a good cultural fit for our company. Who would you recommend?",
+                " We're expanding our team and need to hire several candidates. Do you have any recommendations?",
+                " Can you recommend any candidates who have experience in this industry?",
+                " I'm looking for a candidate who is a good communicator. Who would you suggest?",
+                " We need to hire a candidate who can hit the ground running. Who do you think would be a good fit?",
+                " Can you suggest any candidates who have a proven track record in this field? ",
+                 "I am looking for candidate",
+                 "I am looking for job",
+                  "job",
+                  "candidate"
+                ],
+
+      "responses": [ "What kind of job are you looking for? Do you have any specific requirements or preferences?",
+      "There are many job opportunities out there. Can you tell me a bit more about your skills,designation and experience?",
+      "I would be happy to recommend some jobs for you. What industry are you interested in?",
+      "Sure, I can help with that. Can you give me some more information about your qualifications and technical interests?",
+      "Absolutely, based on your requirements, I have a few candidates in mind. Can I share their profiles with you?",
+      "I'd be happy to recommend some candidates. Can you tell me a bit more about the job requirements?",
+      "I know a few candidates who are actively looking for work in this field. Would you like to me share their profile?",
+      "Based on your description of the role, I think these candidates would be a good fit?",
+      "I have a network of talented professionals, and I'm confident that I can find the right candidate for your needs. Would you like me to start looking?",
+      "I've worked with some excellent candidates in the past who may be a good fit for this position. Can I recommend?",
+      "Sure, I know a candidate who has the skills and experience you're looking for. Would you like me to send over their resume?",
+      "Based on my experience and expertise, I believe these candidates would be a great fit for your team. Can I provide you with their details?",
+      "I have a database of qualified candidates who may be suitable for your role. Would you like me to search for them?"
+    ]
+    },
+    {
+      
+        "name": "Employer_Employee Job Description Request",
+        "patterns": [
+          "I am skilled in {skills} and have {years} years of experience as a {designation}.",
+          "My skills include {skills} and I have worked as a {designation} for {years} years.",
+          "I am having {skills} with {years} years of experience as a {designation}.",
+          "I am looking for job opportunities where I can utilize my skills in {skills} and {years} years of experience as a {designation}.",
+          "Can you suggest any job openings that match my skills in {skills} and experience as a {designation} for {years} years?",
+          "I would like to apply for the position of {job title} that requires skills in {skills} and {years} years of experience as a {designation}.",
+          "How can I apply for the job that matches my skills in {skills} and experience as a {designation}?",
+          "What career growth opportunities are available for someone with my skills in {skills} and experience as a {designation}?",
+          "My career goal is to become a {job title} and I believe my skills in {skills} and {years} years of experience as a {designation} will help me achieve it.",
+          "I aspire to work for a company that values my skills in {skills} and experience as a {designation} and offers opportunities for growth and learning.",
+          "We are looking for someone with the job title of {job_title} and we need someone who has experience in {required_skills} and {additional_requirements}. Can you recommend some candidates who fit this description?",
+          "We are hiring for a {job_title}, can you recommend suitable candidates?",
+          "We are looking for candidates with a specific set of skills, but we are not sure about the job title. Can you recommend a job title that fits these requirements?"
+
+        ],
+        "responses": [
+          "Based on your skills and experience, there are several job opportunities Would you like me to search for job opportunities for you?"
+        ],
+        "actions": [
+          {
+            "type": "execute_script",
+            "script": "get_job_recommendations",
+            "params": {
+              "skills": "{skills}",
+              "experience": "{years} years as a {designation}"
+            },
+            "success_responses": [
+              {
+                "type": "text",
+                "text": "Here are some job recommendations based on your skills and experience:\n{job_list}"
+              }
+            ]
+          }
+        ]
+
+
+    },
+
+    {
+      "name": "User Further Assistance",
+      "patterns": [
+        "None of the recommended candidates have the exact qualifications I'm looking for. Can you find me more suitable candidates?",
+        "I'm interested in exploring other job opportunities. Can you recommend any other openings?",
+        "The recommended candidates are not available for the time frame that I need. Can you find me candidates who are available?",
+        "I'm looking for a remote job. Can you recommend any remote job openings?",
+        "The recommended jobs don't offer the salary or benefits that I'm looking for. Can you recommend other jobs that meet my salary and benefit expectations?",
+        "I have additional questions about the recommended jobs. Can you provide me with more information about the job responsibilities, company culture, and career growth opportunities?",
+        "I'm not sure if I meet the qualifications for the recommended jobs. Can you clarify the qualifications and requirements for me?"
+      ],
+      "responses": [
+        "Certainly, I can help you find more candidates with the specific qualifications you're looking for. Can you please provide me with more details on your ideal candidate?",
+        "Absolutely, I can recommend other job openings based on your qualifications and interests. Can you please tell me more about your desired job requirements and preferences?",
+        "I apologize for the inconvenience. Can you please provide me with more information on the time frame that you need and the specific job requirements?",
+        "Sure, I can recommend remote job openings that meet your qualifications and preferences. Can you please tell me more about your desired remote work arrangement?",
+        "I understand. Can you please provide me with more information?",
+        "I'm happy to provide you with more information about the recommended jobs. What specifically would you like to know?",
+        "Sure, I can clarify the qualifications and requirements for you. Can you please provide me with more information on your qualifications and experience?"
+      ]
+    },
+
+
+    {
+      "name": "Goodbye",
+      "patterns": ["bye", "goodbye", "see you later"],
+      "responses": ["Goodbye! Have a great day."]
+    },
+    {
+      "name": "Thanks",
+      "patterns": ["thank you", "thanks", "appreciate it"],
+      "responses": ["You're welcome!", "No problem.", "Glad to help!"]
+    }
+
+  ]
+}
+
+
+
+
+
